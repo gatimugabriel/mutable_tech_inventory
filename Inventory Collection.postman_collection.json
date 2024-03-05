@@ -1,0 +1,407 @@
+{
+	"info": {
+		"_postman_id": "ee13d380-b5fd-4f22-a9db-2e20af348b79",
+		"name": "Inventory Collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "24249138",
+		"_collection_link": "https://www.postman.com/solar-equinox-291543/workspace/m-tech-inventory/collection/24249138-ee13d380-b5fd-4f22-a9db-2e20af348b79?action=share&source=collection_link&creator=24249138"
+	},
+	"item": [
+		{
+			"name": "auth",
+			"item": [
+				{
+					"name": "SignUp (Create User)",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"userName\":\"gabu\",\n    \"email\":\"gabu@gmail.com\",\n    \"password\":\"Password#1\",\n    \"role\": \"admin\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/auth/signup",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"auth",
+								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"userName\": \"gabu\",\n    \"password\":\"Password#1\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/auth/signin",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"auth",
+								"signin"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Logout",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/auth/signout",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"auth",
+								"signout"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Refresh Access Token",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/auth/refresh",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"auth",
+								"refresh"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "user-management",
+			"item": [
+				{
+					"name": "Get My Profile",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/u/profile",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"u",
+								"profile"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Users",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/u/profile/all",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"u",
+								"profile",
+								"all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update user profile",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"userName\":\"gabuu\",\n    \"email\":\"gabu@gmail.com\",\n    \"password\":\"Password#1\",\n    \"role\": \"admin\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/u/profile",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"u",
+								"profile"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete User",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/u/profile",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"u",
+								"profile"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "products",
+			"item": [
+				{
+					"name": "Add Product",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"sku\": \"brd\",\n    \"barcode\": \"5678904\",\n    \"productName\": \"Festive Bread\",\n    \"productDescription\": \"\",\n    \"productCategory\": \"food, perishable\",\n    \"reOrderPoint\": 10,\n    \"maximumStock\": 500,\n    \"pricePerUnit\": 800\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/products/add",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"products",
+								"add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Product by SKU",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/products/brd",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"products",
+								"brd"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Products",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/products",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Product",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"sku\": \"brd\",\n    \"barcode\": \"5678904\",\n    \"productName\": \"Festive Bread\",\n    \"productDescription\": \"\",\n    \"productCategory\": \"food, perishable\",\n    \"reOrderPoint\": 10,\n    \"maximumStock\": 500,\n    \"pricePerUnit\": 800\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/products/brd",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"products",
+								"brd"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Product",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/products/brd",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"products",
+								"brd"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Purchase Product(s)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/products/purchase/5678904?units=2",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"products",
+								"purchase",
+								"5678904"
+							],
+							"query": [
+								{
+									"key": "units",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Low-Stock Products",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/products/level/lowstock",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"products",
+								"level",
+								"lowstock"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get a Product's Value",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/products/value/product/brd",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"products",
+								"value",
+								"product",
+								"brd"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Re-Order Product",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/products/re-order/brd",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"products",
+								"re-order",
+								"brd"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Store Value",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/products/value/all",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"products",
+								"value",
+								"all"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
