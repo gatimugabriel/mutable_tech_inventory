@@ -188,9 +188,9 @@ const deleteProduct = expressAsyncHandler(async (req, res) => {
     });
 });
 
-// @desc    Purchase a product
-// @route   GET /base_api/products/purchase/:barcode
-const purchaseProduct = expressAsyncHandler(async (req, res) => {
+// @desc    Sell a product
+// @route   GET /base_api/products/sell/:barcode
+const sellProduct = expressAsyncHandler(async (req, res) => {
     const {barcode} = req.params;
     let {units} = req.query
     units = +units || 1;
@@ -232,6 +232,18 @@ const getLowStockProducts = expressAsyncHandler(async (req, res) => {
     }
 
     res.status(200).send(lowStockProducts);
+});
+
+// @desc Get out of stock products
+// @route GET /base_api/products/level/out-of-stock
+const getOutOfStockProducts = expressAsyncHandler(async (req, res) => {
+    const outOfStockProducts = await Product.findAll({where: {inStock: 0}});
+    if (!outOfStockProducts) {
+        res.status(404);
+        throw new Error('No out of stock products');
+    }
+
+    res.status(200).send(outOfStockProducts);
 });
 
 // @desc Get a product's value
@@ -309,8 +321,9 @@ export default {
     getAllProducts,
     updateProduct,
     deleteProduct,
-    purchaseProduct,
+    sellProduct,
     getLowStockProducts,
+    getOutOfStockProducts,
     getProductValue,
     getAllProductsValue,
     reOrderProduct

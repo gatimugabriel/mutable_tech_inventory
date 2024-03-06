@@ -26,6 +26,13 @@ export default (sequelize, Sequelize) => {
             type: Sequelize.DECIMAL(10, 2),
             allowNull: false
         },
+        category_id: {
+            type: Sequelize.INTEGER,
+            references: {
+                model: "categories",
+                key: "id",
+            }
+        },
         reOrderPoint: {
             type: Sequelize.INTEGER,
             allowNull: false,
@@ -46,5 +53,5 @@ export default (sequelize, Sequelize) => {
         timestamps: true,
     })
 
-    return { Product }
+    return {Product}
 }

@@ -126,6 +126,8 @@ const getAllProfiles = asyncHandler(async (req, res) => {
     res.status(200).send(users);
 
 })
+
+
 export default {
     getUserProfile,
     updateUserProfile,

@@ -40,6 +40,11 @@ const signUp = asyncHandler(async (req, res) => {
         res.status(201).json({
             message:
                 "User created successfully",
+            user: {
+                userName: newUser.userName,
+                email: newUser.email,
+                role: newUser.role,
+            }
         })
     } catch (error) {
         await t.rollback()
@@ -157,7 +162,7 @@ const refresh = asyncHandler(async (req, res) => {
 });
 
 // @ desc ---- Forgot Password
-// @ route--POST-- [base_api] / auth / forgot - password
+// @ route--POST-- [base_api] /auth/forgot-password
 const forgotPassword = asyncHandler(async (req, res) => {
     const { email } = req.body;
 
@@ -193,12 +198,12 @@ const forgotPassword = asyncHandler(async (req, res) => {
 })
 
 // @ desc ---- Reset Password
-// @ route--PUT-- [base_api] / auth / reset - password /: resetToken
+// @ route--PUT-- [base_api]/auth/reset-password/:resetToken
 const resetPassword = asyncHandler(async (req, res) => {
-    const { password, confirm_password } = req.body;
+    const { password, confirmPassword } = req.body;
     const { resetToken } = req.params;
 
-    if (password !== confirm_password) {
+    if (password !== confirmPassword) {
         res.status(400);
         throw new Error("Passwords do not match");
     }

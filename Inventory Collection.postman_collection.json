@@ -17,7 +17,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"userName\":\"gabu\",\n    \"email\":\"gabu@gmail.com\",\n    \"password\":\"Password#1\",\n    \"role\": \"admin\"\n}",
+							"raw": "{\n    \"userName\":\"gabbu\",\n    \"email\":\"gatimu652@gmail.com\",\n    \"password\":\"Password#1\",\n    \"role\": \"admin\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -44,7 +44,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"userName\": \"gabu\",\n    \"password\":\"Password#1\"\n}",
+							"raw": "{\n    \"userName\": \"gabbu\",\n    \"password\":\"Password#1\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -95,6 +95,61 @@
 							"path": [
 								"auth",
 								"refresh"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Forgot Password",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\":\"gabu@gmail.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/auth/forgot-password",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"auth",
+								"forgot-password"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Reset Password",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"password\":\"Password#2\",\n    \"confirmPassword\":\"Password#2\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/auth/reset-password/30f121e8cca59a44719b40d3637a52befce66574",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"auth",
+								"reset-password",
+								"30f121e8cca59a44719b40d3637a52befce66574"
 							]
 						}
 					},
@@ -300,24 +355,24 @@
 					"response": []
 				},
 				{
-					"name": "Purchase Product(s)",
+					"name": "Sell Product(s)",
 					"request": {
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{baseUrl}}/products/purchase/5678904?units=2",
+							"raw": "{{baseUrl}}/products/sell/5678904?units=498",
 							"host": [
 								"{{baseUrl}}"
 							],
 							"path": [
 								"products",
-								"purchase",
+								"sell",
 								"5678904"
 							],
 							"query": [
 								{
 									"key": "units",
-									"value": "2"
+									"value": "498"
 								}
 							]
 						}
@@ -396,6 +451,25 @@
 								"products",
 								"value",
 								"all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Out of Stock Items",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/products/level/outOfStock",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"products",
+								"level",
+								"outOfStock"
 							]
 						}
 					},

@@ -10,8 +10,9 @@ router.get('/:sku', productController.getProductBySku);
 // -- protected routes --//
 router.use(authMiddleware.verifyToken)
 
-router.get('/purchase/:barcode', productController.purchaseProduct);
+router.get('/sell/:barcode', productController.sellProduct);
 router.get('/level/lowstock', productController.getLowStockProducts);
+router.get('/level/outOfStock', productController.getOutOfStockProducts);
 router.get('/value/product/:sku', productController.getProductValue);
 router.get('/value/all', productController.getAllProductsValue);
 router.post('/re-order/:sku', productController.reOrderProduct);
