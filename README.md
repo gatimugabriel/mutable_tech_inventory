@@ -4,23 +4,14 @@ A backend API for managing inventory in a store. It allows users to create, read
 
 ## Table of Contents
 
-- [Features](#features)
 - [Tech Stack](#tech-stack)
+- [Application Structure](#Application-Structure)
+- [Features](#Key-Features)
 - [Getting Started](#getting-started)
     - [Prerequisites](#prerequisites)
     - [Installation](#installation)
 - [API Endpoints](#api-endpoints)
 - [Testing](#testing)
-
-[//]: # (- [License]&#40;#license&#41;)
-
-[//]: # (- [Contact]&#40;#contact&#41;)
-
-## Features
-
-- User authentication and authorization
-- CRUD operations for inventory items
-- Error handling and validation
 
 ## Tech Stack
 
@@ -30,15 +21,57 @@ This project is built with:
 - Express.js
 - PostgreSQL
 
+## Application Structure
+
+The application follows a modular structure with separate directories in the `src` dir for different components:
+
+- `config/`: Contains configuration files for database, authentication, and email settings.
+- `controllers/`: Handles the logic for different routes and operations.
+- `middleware/`: Contains middleware functions for authentication, error handling, and input validation.
+- `models/`: Defines the data models for entities like products, users, and tokens.
+- `routes/`: Defines the API routes and associates them with corresponding controller functions.
+- `utils/`: Utility functions for token generation, email sending, and other helper functions.
+
+### Key Features
+
+1. **Authentication and Authorization**:
+  - User registration and login functionality with JSON Web Tokens (JWT) for authentication.
+  - Role-based access control (RBAC) for authorization.
+  - Password reset functionality
+
+2. **Product Management**:
+  - CRUD operations for managing inventory items (products).
+  - Ability to fetch products based on stock levels (low stock or out of stock).
+  - Calculation of total product value and individual product value.
+  - Reordering functionality for low-stock products.
+
+3. **User Management**:
+  - CRUD operations for managing user profiles.
+  - Ability to fetch all user profiles (for admin users).
+
+4. **Error Handling and Validation**:
+  - Middleware for handling errors and returning appropriate HTTP status codes.
+  - Input validation for user registration, authentication, and product management.
+
+5. **Documentation**:
+  - README file (this file)
+
+6. **Database Integration**:
+  - Connection to a PotgreSQL database for persistent data storage.
+
+
 ## Getting Started
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
 
 ### Prerequisites
 
-- Node.js
-- npm
-- PostgreSQL
+- Ensure `Node` is installed in your machine or running(in a container)
+- Ensure you have `npm` or `pnpm` or `yarn` package manager 
+- PostgreSQL database installed and running (you can use local installation or cloudbased databases)
+- A code editor 
+- `Postman` or `curl` (for testing the API endpoints)
+
 
 ### Installation
 
