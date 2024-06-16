@@ -34,9 +34,28 @@ const signUp = asyncHandler(async (req, res) => {
         if (!newUser) {
             res.status(500)
             throw new Error('Failed to create user. Try again later')
-        }     
-      
+        }
+
         await t.commit()
+
+        // generate access token
+        const { accessToken, refreshToken } = await tokenGenerator(
+            res,
+            newUser.id,
+            newUser.userName,
+            newUser.email,
+            newUser.role
+        );
+
+        // save refresh token
+        await Token.create({
+            user_id: newUser.id,
+            token: refreshToken,
+            action: 'auth',
+            expires: Date.now() + 7 * 24 * 60 * 60 * 1000, // 7 days
+        })
+
+
         res.status(201).json({
             message:
                 "User created successfully",
@@ -44,7 +63,8 @@ const signUp = asyncHandler(async (req, res) => {
                 userName: newUser.userName,
                 email: newUser.email,
                 role: newUser.role,
-            }
+            },
+            accessToken: accessToken
         })
     } catch (error) {
         await t.rollback()
@@ -57,6 +77,7 @@ const signUp = asyncHandler(async (req, res) => {
 // @ desc ---- User Login -> set tokens
 // @ route  --POST-- [base_api]/auth/signIn
 const signIn = asyncHandler(async (req, res) => {
+    console.log(req.body)
     const { email, userName, password } = req.body;
     let user;
 
@@ -122,9 +143,9 @@ const signOut = asyncHandler(async (req, res) => {
         throw new Error('Failed to logout')
     }
 
-     // clear tokens in http-only cookies
-     res.clearCookie("accessToken");
-     res.clearCookie("refreshToken");
+    // clear tokens in http-only cookies
+    res.clearCookie("accessToken");
+    res.clearCookie("refreshToken");
 
     res.status(200).json({ message: "Logged Out" });
 });
